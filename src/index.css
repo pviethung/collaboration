@@ -1,4 +1,5 @@
 @import-normalize;
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap');
 
 *,
 *::before,
@@ -15,4 +16,8 @@
   --blue-200: #04297a;
   --gray: #637381;
   --black: #212b36;
+}
+
+body {
+  font-family: 'Public Sans', sans-serif;
 }

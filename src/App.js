@@ -1,5 +1,5 @@
-function App() {
-  return <h1>App</h1>;
-}
-
+const App = () => {
+  console.count('[Component </App> rendered] ');
+  return <div>App</div>;
+};
 export default App;

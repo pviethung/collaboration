@@ -1,11 +1,7 @@
-import { StyledForm } from '../styles/components';
+import { Form } from 'styles';
 
 const Login = () => {
   console.count('[Component <Login/> rendered] ');
-  return (
-    <StyledForm>
-      <input type="text" value="dasdsadas " />
-    </StyledForm>
-  );
+  return <Form></Form>;
 };
 export default Login;

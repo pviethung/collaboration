@@ -1,8 +1,8 @@
+import Signup from 'pages/Signup/Signup';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { GlobalStyle } from 'styles';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
-import GlobalStyle from './styles/GlobalStyle';
 
 const App = () => {
   console.count('[Component </App> rendered] ');

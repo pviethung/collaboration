@@ -1,4 +1,4 @@
-import { Container, Flex, Form } from 'styles';
+import { Container, Flex, Form } from 'styles/common';
 import { ColLeft } from './styles';
 
 const Signup = () => {

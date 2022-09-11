@@ -1,11 +1,10 @@
 import styled from 'styled-components';
+import { Column } from 'styles/common/Column';
 
-export const ColLeft = styled.div`
-  display: none;
-  width: 30%;
-
-  @media (min-width: 1024px) {
-    display: block;
-    background-color: red;
+export const StyledSignup = styled.div`
+  ${Column} {
+    &:first-child {
+      display: none;
+    }
   }
 `;

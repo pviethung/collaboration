@@ -1,9 +1,31 @@
-import { colors } from './colors';
-
-export const lightTheme = {
-  mainColor: colors.black,
+const modes = {
+  light: {
+    100: '#fff',
+  },
+  dark: {
+    100: '#212b36',
+    200: '#161c24',
+  },
 };
 
-export const darkTheme = {
-  mainColor: colors['blue-100'],
+const presets = {
+  green: {
+    100: '#00ab55',
+    200: '#007b55',
+  },
 };
+
+const common = {
+  black: '#000',
+  white: '#fff',
+  gray: {
+    100: '#919eab52',
+    200: '#637381',
+  },
+};
+
+export const getTheme = (mode, preset) => ({
+  mode: modes[mode],
+  preset: presets[preset],
+  common: common,
+});

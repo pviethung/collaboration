@@ -1,4 +1,5 @@
 import Layout from 'components/Layout';
+import Create from 'pages/Create/Create';
 import Login from 'pages/Login/Login';
 import Signup from 'pages/Signup/Signup';
 import { Route, Routes } from 'react-router-dom';
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/create" element={<Create />} />
         </Routes>
       </Layout>
     </>

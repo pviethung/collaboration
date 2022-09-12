@@ -24,7 +24,7 @@ export const Form = styled.form`
       width: 100%;
       height: 56px;
       padding: 16.5px 14px;
-      border-radius: ${rounded.md};
+      border-radius: ${rounded.sm};
       border: 1px solid ${({ theme: { common } }) => common.gray['100']};
       ${({ theme: { preset } }) => css`
         :focus {

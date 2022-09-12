@@ -2,7 +2,7 @@ import { Button, Column, Container, Flex, Form } from 'styles/common';
 import { StyledSignup } from './styles';
 import { ReactComponent as LogoCheckbox } from 'assets/checbox.svg';
 import { ReactComponent as LogoCheckboxOutline } from 'assets/checkbox-outline.svg';
-import LoginIllustration from 'assets/illustration_login.png';
+import LoginIllustration from 'assets/illustration_singup.png';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
@@ -12,7 +12,7 @@ const Signup = () => {
       <StyledSignup>
         <Flex>
           <Column className="layout-col">
-            <h3>Hi, Welcome Back</h3>
+            <h3>Manage the job more effectively with Minimal</h3>
             <img src={LoginIllustration} alt="" />
           </Column>
           <Column className="layout-col">

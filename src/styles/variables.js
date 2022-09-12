@@ -1,5 +1,6 @@
 export const rounded = {
-  md: '8px',
+  sm: '8px',
+  md: '12px',
   lg: '16px',
 };
 

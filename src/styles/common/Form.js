@@ -27,7 +27,8 @@ export const Form = styled.form`
       border-radius: ${rounded.sm};
       border: 1px solid ${({ theme: { common } }) => common.gray['100']};
       ${({ theme: { preset } }) => css`
-        :focus {
+        :focus,
+        :valid {
           outline-color: ${preset['100']};
           & + label {
             color: ${preset['100']};
@@ -72,7 +73,10 @@ export const Form = styled.form`
     }
 
     input[type='checkbox'] {
-      display: none;
+      opacity: 0;
+      margin-right: -17px;
+      z-index: 1;
+      cursor: pointer;
       ~ svg:first-of-type {
         opacity: 1;
         > path {
@@ -95,6 +99,7 @@ export const Form = styled.form`
     }
 
     label {
+      cursor: pointer;
       margin-left: 5px;
     }
   }

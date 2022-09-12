@@ -10,9 +10,6 @@ export const StyledNavbar = styled.nav`
     align-items: center;
     li {
       margin-left: 15px;
-      a {
-        color: ;
-      }
     }
     ${Button} {
       height: auto;

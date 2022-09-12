@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Error } from 'styles/common';
 import { Column } from 'styles/common/Column';
 import { rounded } from 'styles/variables';
 
@@ -28,6 +29,9 @@ export const StyledSignup = styled.div`
       flex-direction: column;
       justify-content: center;
     }
+  }
+  ${Error} {
+    margin-bottom: 20px;
   }
 
   @media (min-width: 1024px) {

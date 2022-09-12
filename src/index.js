@@ -5,15 +5,18 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { getTheme } from 'styles';
+import AuthContextProvider from 'contexts/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const theme = getTheme('light', 'green');
 
 root.render(
   <BrowserRouter>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <AuthContextProvider>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </AuthContextProvider>
   </BrowserRouter>
 );
 

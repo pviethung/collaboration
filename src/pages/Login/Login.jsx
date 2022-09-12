@@ -1,12 +1,22 @@
-import { Button, Column, Container, Flex, Form } from 'styles/common';
+import { Button, Column, Container, Error, Flex, Form } from 'styles/common';
 import { StyledLogin } from './styles';
 import { ReactComponent as LogoCheckbox } from 'assets/checbox.svg';
 import { ReactComponent as LogoCheckboxOutline } from 'assets/checkbox-outline.svg';
 import LoginIllustration from 'assets/illustration_login.png';
 import { Link } from 'react-router-dom';
+import { useLogin } from 'hooks/useLogin';
+import { useRef } from 'react';
 
 const Login = () => {
   console.count('[Component <Login/> rendered] ');
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const { login, isError, error } = useLogin();
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    login(emailRef.current.value, passwordRef.current.value);
+  };
   return (
     <Container>
       <StyledLogin>
@@ -16,17 +26,18 @@ const Login = () => {
             <img src={LoginIllustration} alt="" />
           </Column>
           <Column>
-            <Form>
+            <Form onSubmit={loginHandler}>
               <div className="form-desc">
                 <h4>Sign in to Collaboration</h4>
                 <p>Enter your details below</p>
               </div>
+              {isError && <Error>{error.message}</Error>}
               <div className="form-group">
-                <input type="email" />
+                <input ref={emailRef} type="email" />
                 <label>Email address</label>
               </div>
               <div className="form-group">
-                <input type="password" />
+                <input ref={passwordRef} type="password" />
                 <label>Password</label>
               </div>
               <Flex

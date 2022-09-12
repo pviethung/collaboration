@@ -1,20 +1,32 @@
+import { useAuthContext } from 'hooks/useAuthContext';
+import { useLogout } from 'hooks/useLogout';
 import { Link } from 'react-router-dom';
 import { Button } from 'styles/common';
 import { StyledNavbar } from './Navbar.styles';
 
 const Navbar = () => {
   console.count('[Component <Navbar/> rendered] ');
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+  const logoutHandler = () => {
+    logout();
+  };
+
   return (
     <StyledNavbar>
       <ul>
+        {!user && (
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Signup</Link>
+            </li>
+          </>
+        )}
         <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/signup">Signup</Link>
-        </li>
-        <li>
-          <Button href="/logout">Logout</Button>
+          <Button onClick={logoutHandler}>Logout</Button>
         </li>
       </ul>
     </StyledNavbar>

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors, rounded } from 'styles/variables';
+import { rounded } from 'styles/variables';
 
 export const Button = styled.button`
   width: 100%;
@@ -9,8 +9,8 @@ export const Button = styled.button`
   padding: 8px 22px;
   color: #fff;
   text-align: center;
-  ${(p) => css`
-    box-shadow: ${p.boxShadow || '#00ab553d'} 0px 8px 16px 0px;
-    background-color: ${p.bgColor || colors['green-100']};
+  ${({ theme: { preset } }) => css`
+    box-shadow: ${preset['50']} 0px 8px 16px 0px;
+    background-color: ${preset['100']};
   `};
 `;

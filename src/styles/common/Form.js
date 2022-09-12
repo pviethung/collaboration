@@ -48,6 +48,13 @@ export const Form = styled.form`
       color: ${({ theme: { common } }) => common.gray['200']};
       margin: 0;
     }
+
+    @media (min-width: 1024px) {
+      h4 {
+        font-size: 1.5rem;
+        line-height: 1.5;
+      }
+    }
   }
   .form-checkbox-wrap {
     font-size: 14px;
@@ -95,5 +102,8 @@ export const Form = styled.form`
     font-size: 14px;
     margin-top: 24px;
     text-align: center;
+    a {
+      margin-left: 5px;
+    }
   }
 `;

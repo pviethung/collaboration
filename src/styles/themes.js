@@ -10,13 +10,14 @@ const modes = {
 
 const presets = {
   green: {
+    50: '#00ab553d',
     100: '#00ab55',
     200: '#007b55',
   },
 };
 
 const common = {
-  black: '#000',
+  black: '#212b36',
   white: '#fff',
   gray: {
     100: '#919eab52',

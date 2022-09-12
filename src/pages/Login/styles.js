@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Column } from 'styles/common/Column';
 import { rounded } from 'styles/variables';
 
-export const StyledSignup = styled.div`
+export const StyledLogin = styled.div`
   ${Column} {
     &:first-child {
       display: none;

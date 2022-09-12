@@ -1,9 +1,9 @@
 import Layout from 'components/Layout';
+import Login from 'pages/Login/Login';
 import Signup from 'pages/Signup/Signup';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from 'styles';
 import Home from './pages/Home';
-import Login from './pages/Login';
 
 const App = () => {
   console.count('[Component </App> rendered] ');

@@ -1,5 +1,5 @@
 import { ReactComponent as Logo } from 'assets/Logo.svg';
-import { Container } from 'styles/common';
+import { Container, Flex } from 'styles/common';
 import { Header } from './Layout.styles';
 
 const Layout = ({ children }) => {
@@ -8,7 +8,15 @@ const Layout = ({ children }) => {
     <>
       <Header>
         <Container>
-          <Logo />
+          <Flex justifyContent="space-between">
+            <div className="logo-wrap">
+              <Logo />
+            </div>
+            <p className="signup-account">
+              Don't have an account?
+              <a href="/">Get started</a>
+            </p>
+          </Flex>
         </Container>
       </Header>
       <main>{children}</main>

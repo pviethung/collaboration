@@ -1,14 +1,14 @@
 import { Button, Column, Container, Flex, Form } from 'styles/common';
-import { StyledSignup } from './styles';
+import { StyledLogin } from './styles';
 import { ReactComponent as LogoCheckbox } from 'assets/checbox.svg';
 import { ReactComponent as LogoCheckboxOutline } from 'assets/checkbox-outline.svg';
 import LoginIllustration from 'assets/illustration_login.png';
 
-const Signup = () => {
-  console.count('[Component <Signup/> rendered] ');
+const Login = () => {
+  console.count('[Component <Login/> rendered] ');
   return (
     <Container>
-      <StyledSignup>
+      <StyledLogin>
         <Flex alignItems="center">
           <Column>
             <h3>Hi, Welcome Back</h3>
@@ -50,8 +50,8 @@ const Signup = () => {
             </Form>
           </Column>
         </Flex>
-      </StyledSignup>
+      </StyledLogin>
     </Container>
   );
 };
-export default Signup;
+export default Login;

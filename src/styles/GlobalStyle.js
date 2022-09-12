@@ -1,5 +1,4 @@
 import * as styled from 'styled-components';
-import { colors } from './variables';
 import { normalize } from './normalize';
 
 export const GlobalStyle = styled.createGlobalStyle`
@@ -13,7 +12,7 @@ export const GlobalStyle = styled.createGlobalStyle`
 
   body {
     background-color: ${({ theme }) => theme.mode['100']};
-    color: ${colors.black};
+    color: ${({ theme: { common } }) => common.black};
     font-family: 'Public Sans', sans-serif;
   }
 

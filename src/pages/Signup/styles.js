@@ -3,7 +3,7 @@ import { Column } from 'styles/common/Column';
 import { rounded } from 'styles/variables';
 
 export const StyledSignup = styled.div`
-  ${Column} {
+  .layout-col {
     &:first-child {
       display: none;
       max-width: 465px;

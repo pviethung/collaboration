@@ -1,4 +1,5 @@
 import { ReactComponent as Logo } from 'assets/Logo.svg';
+import { Link } from 'react-router-dom';
 import { Container, Flex } from 'styles/common';
 import { Header } from './Layout.styles';
 
@@ -14,7 +15,7 @@ const Layout = ({ children }) => {
             </div>
             <p className="signup-account">
               Don't have an account?
-              <a href="/">Get started</a>
+              <Link to="/signup">Get started</Link>
             </p>
           </Flex>
         </Container>

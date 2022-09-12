@@ -3,13 +3,14 @@ import { StyledLogin } from './styles';
 import { ReactComponent as LogoCheckbox } from 'assets/checbox.svg';
 import { ReactComponent as LogoCheckboxOutline } from 'assets/checkbox-outline.svg';
 import LoginIllustration from 'assets/illustration_login.png';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   console.count('[Component <Login/> rendered] ');
   return (
     <Container>
       <StyledLogin>
-        <Flex alignItems="center">
+        <Flex>
           <Column>
             <h3>Hi, Welcome Back</h3>
             <img src={LoginIllustration} alt="" />
@@ -45,7 +46,7 @@ const Login = () => {
               <Button>Login</Button>
               <div className="form-redirect">
                 Don't have a account?
-                <a href="/">Get started</a>
+                <Link to="/signup">Get started</Link>
               </div>
             </Form>
           </Column>

@@ -37,6 +37,12 @@ export const Form = styled.form`
         }
       `}
     }
+    textarea {
+      width: 100%;
+      height: 150px;
+      border-radius: ${rounded.sm};
+      border: 1px solid ${({ theme: { common } }) => common.gray['100']};
+    }
   }
   .form-desc {
     margin-bottom: 40px;
@@ -109,6 +115,34 @@ export const Form = styled.form`
     text-align: center;
     a {
       margin-left: 5px;
+    }
+  }
+
+  &&& {
+    .form-group {
+      textarea {
+        + label {
+          top: 0;
+          transform: translate(0, 16.5px) scale(1);
+        }
+        ${({ theme: { preset } }) => css`
+          :focus,
+          :valid {
+            outline-color: ${preset['100']};
+            & + label {
+              color: ${preset['100']};
+              transform: translateY(-6.9px) scale(0.75);
+            }
+          }
+        `}
+
+        &::placeholder {
+          color: #fff;
+        }
+        &:placeholder-shown + label {
+          color: red;
+        }
+      }
     }
   }
 `;

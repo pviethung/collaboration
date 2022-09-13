@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <StyledNavbar>
+  <StyledNavbar>
       <ul>
         {!user && (
           <>

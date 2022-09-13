@@ -53,6 +53,10 @@ export const GlobalStyle = styled.createGlobalStyle`
 
   .react-select-container {
     height: 56px;
+    + label {
+      transform: translateY(calc(-100% - 16.5px)) scale(0.75) !important;
+      color: ${({ theme: { preset } }) => preset['100']} !important;
+    }
   }
   .react-select__control {
     border-radius: ${rounded.sm} !important;

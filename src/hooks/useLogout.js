@@ -1,5 +1,6 @@
-import { auth } from 'backend/config';
+import { auth, db } from 'backend/config';
 import { signOut } from 'firebase/auth';
+import { doc, updateDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 
@@ -7,7 +8,7 @@ export const useLogout = () => {
   const [error, setError] = useState(null);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { dispatch } = useAuthContext();
+  const { dispatch, user } = useAuthContext();
 
   const logout = async () => {
     setIsError(false);
@@ -16,6 +17,10 @@ export const useLogout = () => {
 
     try {
       await signOut(auth);
+      await updateDoc(doc(db, 'users', user.uid), {
+        online: false,
+      });
+
       dispatch({ type: 'LOGOUT' });
       setIsLoading(false);
     } catch (error) {

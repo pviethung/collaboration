@@ -17,12 +17,6 @@ export const StyledSidebar = styled.div`
       padding: 16px 20px;
       border-radius: ${rounded.md};
       background-color: ${({ theme: { common } }) => common.gray['0']};
-      img {
-        margin-right: 15px;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-      }
     }
   }
 

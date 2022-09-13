@@ -38,6 +38,7 @@ export const Form = styled.form`
       `}
     }
     textarea {
+      padding: 16.5px 14px;
       width: 100%;
       height: 150px;
       border-radius: ${rounded.sm};

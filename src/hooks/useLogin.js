@@ -1,5 +1,6 @@
-import { auth } from 'backend/config';
+import { auth, db } from 'backend/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, updateDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 
@@ -15,8 +16,12 @@ export const useLogin = () => {
     setError(null);
 
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
-      dispatch({ type: 'LOGIN', payload: res.user });
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      await updateDoc(doc(db, 'users', user.uid), {
+        online: true,
+      });
+
+      dispatch({ type: 'LOGIN', payload: user });
       setIsLoading(false);
     } catch (error) {
       setIsError(true);

@@ -2,17 +2,28 @@ import { StyledSidebar } from './Sidebar.styles';
 import { ReactComponent as Logo } from 'assets/Logo.svg';
 import { Flex } from 'styles/common';
 import { NavLink } from 'react-router-dom';
+import { useAuthContext } from 'hooks/useAuthContext';
+import Avatar from './Avatar';
 
 const Sidebar = () => {
   console.count('[Component <Sidebar/> rendered] ');
+  const { user } = useAuthContext();
+  if (!user) {
+    return <></>;
+  }
+
+  const { photoURL, displayName } = user;
+
   return (
     <StyledSidebar>
       <div className="user-greeting-area">
         <Logo />
-        <Flex alignItems="center" className="greeting">
-          <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="" />
-          <h4>Hello, Hung</h4>
-        </Flex>
+        <div className="greeting">
+          <Flex alignItems="center">
+            <Avatar photoURL={photoURL} />
+            <h4>Hello, {displayName}</h4>
+          </Flex>
+        </div>
       </div>
       <ul className="sidebar-nav">
         <li>

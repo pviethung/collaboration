@@ -1,10 +1,10 @@
-import { auth, storage } from 'backend/config';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { useState } from 'react';
+import { auth, storage, db } from 'backend/config';
 import { useAuthContext } from './useAuthContext';
+
+import { useState } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db } from 'backend/config';
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 
 export const useSignup = () => {
   const [error, setError] = useState(null);

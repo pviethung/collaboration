@@ -44,6 +44,12 @@ export const Form = styled.form`
       border-radius: ${rounded.sm};
       border: 1px solid ${({ theme: { common } }) => common.gray['100']};
     }
+    input[type='file'] {
+      + label {
+        color: ${({ theme: { preset } }) => preset['100']};
+        transform: translateY(calc(-100% - 16.5px)) scale(0.75);
+      }
+    }
   }
   .form-desc {
     margin-bottom: 40px;

@@ -19,6 +19,7 @@ export const useLogout = () => {
       await signOut(auth);
       await updateDoc(doc(db, 'users', user.uid), {
         online: false,
+        lastSignInTime: new Date(user.metadata.lastSignInTime).toString(),
       });
 
       dispatch({ type: 'LOGOUT' });

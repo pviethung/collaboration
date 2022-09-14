@@ -19,7 +19,6 @@ const Project = () => {
     onSnapshotDocument,
     documentData,
     isError,
-    error,
     updateDocument,
     deleteDocument,
   } = useFirestore('projects', id);
@@ -71,7 +70,7 @@ const Project = () => {
           </Button>
         )}
       </div>
-      <div>
+      <div className="project-comments">
         <h3>Project comments</h3>
         <ProjectComments
           oldComments={comments}

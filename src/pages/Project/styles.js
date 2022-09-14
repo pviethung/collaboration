@@ -1,4 +1,3 @@
-import Avatar from 'components/Avatar';
 import styled from 'styled-components';
 import { Button, Form } from 'styles/common';
 import { rounded } from 'styles/variables';
@@ -9,7 +8,7 @@ export const StyledProjectDetails = styled.div`
   margin: 0 20px;
 
   .project-details {
-    flex: 1;
+    width: 60%;
     margin-right: 20px;
 
     > div {
@@ -33,6 +32,9 @@ export const StyledProjectDetails = styled.div`
       margin-top: 20px;
     }
   }
+  .project-comments {
+    flex: 1;
+  }
 
   .comment-list {
     li {
@@ -44,7 +46,6 @@ export const StyledProjectDetails = styled.div`
         font-weight: 700;
       }
       > span {
-        margin-top: 10px;
         display: block;
         font-size: 0.875rem;
       }

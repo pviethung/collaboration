@@ -16,12 +16,11 @@ export const useLogout = () => {
     setError(null);
 
     try {
-      await signOut(auth);
       await updateDoc(doc(db, 'users', user.uid), {
         online: false,
-        lastSignInTime: new Date(user.metadata.lastSignInTime).toString(),
+        lastSignInTime: new Date(user.metadata.lastSignInTime).toISOString(),
       });
-
+      await signOut(auth);
       dispatch({ type: 'LOGOUT' });
       setIsLoading(false);
     } catch (error) {

@@ -9,7 +9,7 @@ import { StyledStatusbar } from './Statusbar.styles';
 const Statusbar = () => {
   console.count('[Component <Statusbar/> rendered] ');
   const { user: currentUser } = useAuthContext();
-  const { onSnapshotDocument: onUsersChange, collectionData: users } =
+  const { onSnapshotCollection: onUsersChange, collectionData: users } =
     useFirestore('users');
 
   useEffect(() => {
@@ -21,11 +21,13 @@ const Statusbar = () => {
     return <></>;
   }
 
+  const filteredUsers = users.filter((user) => user.id !== currentUser.uid);
+
   return (
     <StyledStatusbar>
       <h4>Online</h4>
       <ul>
-        {users.map((user) => {
+        {filteredUsers.map((user) => {
           return (
             <Flex
               key={user.id}

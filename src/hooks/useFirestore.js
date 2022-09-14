@@ -6,35 +6,29 @@ import {
   query,
   where,
   orderBy,
-  // deleteDoc,
-  // doc,
+  doc,
+  updateDoc,
+  deleteDoc,
 } from 'firebase/firestore';
 import { useCallback, useState } from 'react';
-import { useAuthContext } from './useAuthContext';
 
-export const useFirestore = (collectionPath) => {
+export const useFirestore = (collectionPath, documentId) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState(null);
-  // const [data, setData] = useState(null);
 
   const [documentData, setDocumentData] = useState(null);
   const [collectionData, setCollectionData] = useState(null);
-  const { user } = useAuthContext();
 
   const request = async (promise, setDataFn) => {
     setError(null);
-    // setData(null);
-
     setDataFn(null);
     setIsError(false);
     setIsLoading(true);
 
     try {
       const res = await promise;
-      //   setData(res);
-
-      setDataFn(res);
+      if (res) setDataFn(res);
       setIsLoading(false);
     } catch (error) {
       setIsError(true);
@@ -43,26 +37,45 @@ export const useFirestore = (collectionPath) => {
     }
   };
 
-  const addDocument = (name, details, dueDate, category, assignTo) => {
-    request(
-      addDoc(collection(db, collectionPath), {
-        name,
-        details,
-        uid: user.uid,
-        dueDate,
-        category,
-        assignTo,
-      }),
+  const addDocument = (data) => {
+    request(addDoc(collection(db, collectionPath), data), setDocumentData);
+  };
+
+  const deleteDocument = (id) => {
+    request(deleteDoc(doc(db, collectionPath, id)), setDocumentData);
+  };
+
+  const updateDocument = (data) => {
+    return request(
+      updateDoc(doc(db, collectionPath, documentId), data),
       setDocumentData
     );
   };
-  /*
-    const deleteDocument = (id) => {
-      request(deleteDoc(doc(db, 'transactions', id)));
-    };
-  */
 
-  const onSnapshotDocument = useCallback(
+  const onSnapshotDocument = useCallback(() => {
+    setIsLoading(true);
+    setError(null);
+    setIsError(false);
+    setDocumentData(null);
+
+    return onSnapshot(
+      doc(db, collectionPath, documentId),
+      (doc) => {
+        setDocumentData(doc.data());
+        setError(null);
+        setIsError(false);
+        setIsLoading(false);
+      },
+      (error) => {
+        setDocumentData(null);
+        setError(error);
+        setIsError(true);
+        setIsLoading(false);
+      }
+    );
+  }, [collectionPath, documentId]);
+
+  const onSnapshotCollection = useCallback(
     (queryOptions) => {
       const constraints = [];
       if (queryOptions?.where) {
@@ -111,9 +124,9 @@ export const useFirestore = (collectionPath) => {
     addDocument,
     documentData,
     collectionData,
+    onSnapshotCollection,
     onSnapshotDocument,
-    /*
-      deleteDocument,
-      */
+    updateDocument,
+    deleteDocument,
   };
 };

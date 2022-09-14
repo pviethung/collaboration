@@ -4,6 +4,8 @@ import Select from 'react-select';
 import { useRef, useState } from 'react';
 import { useFirestore } from 'hooks/useFirestore';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from 'hooks/useAuthContext';
 
 const categories = [
   { value: 'development', label: 'Development' },
@@ -13,7 +15,7 @@ const categories = [
 ];
 const Create = () => {
   console.count('[Component <Create/> rendered] ');
-  const { collectionData: users, onSnapshotDocument: onUsersChange } =
+  const { collectionData: users, onSnapshotCollection: onUsersChange } =
     useFirestore('users');
   const { addDocument } = useFirestore('projects');
   const nameRef = useRef();
@@ -21,21 +23,30 @@ const Create = () => {
   const dueDateRef = useRef();
   const [category, setCategory] = useState(null);
   const [assignment, setAssignment] = useState(null);
+  const navigate = useNavigate();
+  const { user } = useAuthContext();
 
   useEffect(() => {
     const unsub = onUsersChange();
     return () => unsub();
   }, [onUsersChange]);
 
-  const addProjectHandler = (e) => {
+  const addProjectHandler = async (e) => {
     e.preventDefault();
-    addDocument(
-      nameRef.current.value,
-      detailsRef.current.value,
-      dueDateRef.current.value,
-      category.value,
-      assignment
-    );
+    await addDocument({
+      name: nameRef.current.value,
+      details: detailsRef.current.value,
+      dueDate: dueDateRef.current.value,
+      category: category.value,
+      assignTo: assignment,
+      createdBy: {
+        id: user.uid,
+        photoURL: user.photoURL,
+        displayName: user.displayName,
+      },
+      comments: [],
+    });
+    navigate('/', { replace: true });
   };
 
   if (!users) {

@@ -1,11 +1,12 @@
 import Layout from 'components/Layout';
 import { useAuthContext } from 'hooks/useAuthContext';
 import Create from 'pages/Create/Create';
+import Home from 'pages/Home/Home';
 import Login from 'pages/Login/Login';
 import Signup from 'pages/Signup/Signup';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from 'styles';
-import Home from './pages/Home';
+import Project from 'pages/Project/Project';
 
 const App = () => {
   console.count('[Component </App> rendered] ');
@@ -31,6 +32,10 @@ const App = () => {
           <Route
             path="/create"
             element={user ? <Create /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/projects/:id"
+            element={user ? <Project /> : <Navigate to="/login" />}
           />
         </Routes>
       </Layout>

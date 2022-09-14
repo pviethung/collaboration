@@ -6,14 +6,15 @@ import { StyledNavbar } from './Navbar.styles';
 
 const Navbar = () => {
   console.count('[Component <Navbar/> rendered] ');
-  const { logout } = useLogout();
+  const { logout, isError, error } = useLogout();
   const { user } = useAuthContext();
   const logoutHandler = () => {
     logout();
   };
 
   return (
-  <StyledNavbar>
+    <StyledNavbar>
+      {isError && <>{JSON.stringify(error)}</>}
       <ul>
         {!user && (
           <>

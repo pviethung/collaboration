@@ -1,4 +1,5 @@
 import { ReactComponent as Logo } from 'assets/Logo.svg';
+import { useAuthContext } from 'hooks/useAuthContext';
 import { Link, useLocation } from 'react-router-dom';
 import { Container, Flex } from 'styles/common';
 import { StyledLayout } from './Layout.styles';
@@ -8,6 +9,7 @@ import Statusbar from './Statusbar';
 
 const Layout = ({ children }) => {
   const { pathname } = useLocation();
+  const { user } = useAuthContext();
   let content = '';
   console.count('[Component <Layout/> rendered] ');
 
@@ -40,7 +42,7 @@ const Layout = ({ children }) => {
           <Navbar />
           {children}
         </main>
-        <Statusbar />
+        {user && <Statusbar />}
       </Flex>
     );
   }

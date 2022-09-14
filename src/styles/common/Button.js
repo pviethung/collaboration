@@ -5,6 +5,7 @@ export const Button = styled.button`
   width: 100%;
   border: 0;
   border-radius: ${rounded.md};
+  cursor: pointer;
   height: 48px;
   padding: 8px 22px;
   color: #fff;
